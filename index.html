@@ -1,13 +1,883 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Terence Galos github page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terence Albert G. — Full-Stack &amp; Automation Engineer</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --surface-2: #1c2128;
+      --border: #30363d;
+      --text: #e6edf3;
+      --text-muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-2: #3fb950;
+      --accent-3: #d2a8ff;
+      --accent-4: #ffa657;
+      --accent-5: #ff7b72;
+      --tag-bg: #1f2937;
+      --tag-border: #374151;
+      --new-badge: #1a3a2a;
+      --new-badge-border: #3fb950;
+      --new-badge-text: #3fb950;
+      --highlight-bg: #0e1f12;
+      --highlight-border: #2a5a36;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Header ── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 52px 24px 44px;
+      text-align: center;
+    }
+
+    .avatar-wrapper {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-3));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 auto 20px;
+      letter-spacing: -1px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    header .subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 18px;
+    }
+
+    .header-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .badge-green  { background: var(--new-badge); border: 1px solid var(--new-badge-border); color: var(--new-badge-text); }
+    .badge-blue   { background: #0d2137; border: 1px solid var(--accent); color: var(--accent); }
+    .badge-orange { background: #2a1f0d; border: 1px solid var(--accent-4); color: var(--accent-4); }
+    .badge-muted  { background: var(--surface-2); border: 1px solid var(--border); color: var(--text-muted); }
+
+    .header-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Layout ── */
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 52px 24px 80px;
+    }
+
+    section { margin-bottom: 60px; }
+
+    section > h2 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── About ── */
+    .about-text {
+      font-size: 0.975rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 720px;
+    }
+
+    .about-text strong { color: var(--text); font-weight: 600; }
+
+    /* ── 2025–2026 Highlight ── */
+    .highlight-box {
+      background: var(--highlight-bg);
+      border: 1px solid var(--highlight-border);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-bottom: 28px;
+    }
+
+    .highlight-box .highlight-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .highlight-box h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .highlight-box .period {
+      font-size: 0.78rem;
+      color: var(--accent-2);
+      font-weight: 600;
+      background: var(--new-badge);
+      border: 1px solid var(--new-badge-border);
+      padding: 2px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .highlight-box .context {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .highlight-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 32px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 640px) {
+      .highlight-cols { grid-template-columns: 1fr; }
+    }
+
+    .highlight-box li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      list-style: none;
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 7px;
+      line-height: 1.5;
+    }
+
+    .highlight-box li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      color: var(--accent-2);
+      font-weight: 700;
+    }
+
+    .highlight-box li strong { color: var(--text); font-weight: 600; }
+
+    .sub-projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .sub-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+
+    .sub-card h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .sub-card .tech-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 40px;
+    }
+
+    @media (max-width: 640px) {
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+
+    .skill-group-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 9px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: 5px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      color: var(--text);
+    }
+
+    .tag.core   { border-color: #1d3d74; color: var(--accent);   background: #0a1624; }
+    .tag.new    { border-color: var(--new-badge-border); color: var(--accent-2); background: var(--new-badge); }
+    .tag.devops { border-color: #3a2a0e; color: var(--accent-4); background: #1a1208; }
+
+    .new-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent-2);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .skill-legend {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .legend-item { display: flex; align-items: center; gap: 6px; }
+
+    .legend-swatch {
+      width: 10px; height: 10px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    /* ── Timeline ── */
+    .timeline { position: relative; }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 36px;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 14px;
+      bottom: -20px;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-item:last-child::before { display: none; }
+
+    .timeline-dot {
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--accent);
+    }
+
+    .timeline-dot.green { border-color: var(--accent-2); }
+
+    .timeline-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 3px;
+    }
+
+    .timeline-title { font-size: 0.975rem; font-weight: 700; color: var(--text); }
+    .timeline-org   { font-size: 0.8rem; color: var(--accent); margin-bottom: 10px; }
+    .timeline-period { font-size: 0.78rem; color: var(--text-muted); white-space: nowrap; }
+
+    .timeline-item ul { list-style: none; padding: 0; }
+
+    .timeline-item ul li {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 6px;
+      line-height: 1.55;
+    }
+
+    .timeline-item ul li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      color: var(--accent-2);
+      font-weight: 700;
+    }
+
+    /* ── Scraping Portfolio ── */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+      gap: 14px;
+    }
+
+    .portfolio-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 18px 20px;
+      transition: border-color 0.15s;
+    }
+
+    .portfolio-card:hover { border-color: #3a5a7a; }
+
+    .portfolio-card h3 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .portfolio-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    /* ── Tech Pills ── */
+    .tech-row { display: flex; flex-wrap: wrap; gap: 5px; }
+
+    .tech-pill {
+      font-size: 0.68rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #0d2137;
+      color: var(--accent);
+      border: 1px solid #1d3d74;
+    }
+
+    .tech-pill.green {
+      background: var(--new-badge);
+      color: var(--accent-2);
+      border-color: var(--new-badge-border);
+    }
+
+    /* ── CTA / Contact ── */
+    .cta-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 32px;
+      text-align: center;
+    }
+
+    .cta-box h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .cta-box p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    .cta-btn:hover { opacity: 0.85; text-decoration: none; }
+
+    .cta-btn-primary {
+      background: var(--accent);
+      color: #0d1117;
+    }
+
+    .cta-btn-secondary {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    /* ── Stat cards (inside highlight) ── */
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--highlight-border);
+    }
+
+    .mini-stat {
+      text-align: center;
+    }
+
+    .mini-stat .val {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+    }
+
+    .mini-stat .lbl {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.6rem; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .cta-box { padding: 28px 20px; }
+    }
+  </style>
 </head>
 <body>
 
-    <h1>Hello World!</h1>
-    
+<!-- ══════════════════ HEADER ══════════════════ -->
+<header>
+  <div class="avatar-wrapper">TG</div>
+  <h1>Terence Albert G.</h1>
+  <p class="subtitle">Full-Stack Engineer &amp; Python Automation Specialist</p>
+  <div class="header-badges">
+    <span class="badge badge-green">● Top Rated on Upwork</span>
+    <span class="badge badge-blue">Full-Stack · 2025–2026</span>
+    <span class="badge badge-orange">$20 / hr</span>
+    <span class="badge badge-muted">📍 Tagbilaran, Philippines</span>
+  </div>
+  <div class="header-meta">
+    <span>⭐ 4.99 / 5.00</span>
+    <span>⏱ 28,761+ hrs billed</span>
+    <span>📅 Member since 2010</span>
+    <span>✅ 18 jobs completed · 5 active</span>
+  </div>
+</header>
+
+<!-- ══════════════════ MAIN ══════════════════ -->
+<main>
+
+  <!-- 1 ── About ─────────────────────────────── -->
+  <section id="about">
+    <h2>About</h2>
+    <p class="about-text">
+      I'm a <strong>full-stack engineer and automation specialist</strong> with 5+ years of experience
+      building production-grade systems — from Python web scrapers and data pipelines to multi-service
+      platforms with real-time analytics, Kubernetes deployments, and CI/CD pipelines.
+      Most recently I was a key contributor on a <strong>confidential affiliate marketing platform</strong>,
+      spanning a Node.js API, Next.js admin panel, Python analytics microservice, and a 3-tier
+      static site delivery infrastructure — picking up TypeScript, React, Docker, K8s, and observability
+      tooling along the way.
+      On Upwork I hold a <strong>Top Rated badge</strong> with a 4.99 rating across 28,700+ billed hours,
+      and I'm open to both scraping/automation work and full-stack projects.
+    </p>
+  </section>
+
+  <!-- 2 ── 2025–2026 Highlight ─────────────────── -->
+  <section id="recent">
+    <h2>2025 – 2026 · Recent Work</h2>
+
+    <div class="highlight-box">
+      <div class="highlight-header">
+        <h3>Confidential Affiliate Marketing Platform <span style="font-size:0.75rem; font-weight:400; color:var(--text-muted);">(NDA · team)</span></h3>
+        <span class="period">2025 – 2026</span>
+      </div>
+      <p class="context">Full-Stack Engineer · Team Project · NDA · Node.js · Python · Next.js · Docker · Kubernetes</p>
+
+      <div class="highlight-cols">
+        <ul>
+          <li>Multi-database Express API routing requests to isolated MySQL databases via custom <strong>x-db-target middleware</strong></li>
+          <li><strong>RBAC system</strong> with fine-grained permissions, JWT auth, and per-request model injection pattern</li>
+          <li>Custom <strong>migration scaffolder CLI</strong> for ordered, per-scope Sequelize + raw SQL migrations</li>
+          <li><strong>Namecheap API</strong> integration — automated domain registration, DNS config, SSL provisioning</li>
+          <li>Next.js 14 admin dashboard with <strong>real-time metrics</strong>, geo-distribution maps, and traffic charts</li>
+          <li>Client-side permissions caching via custom hooks (<code>usePermissions</code>, <code>useDashboardData</code>)</li>
+        </ul>
+        <ul>
+          <li>Static site server handling upload, extraction, <strong>script injection</strong>, staging, versioning, and serving of funnels &amp; prelanders</li>
+          <li><strong>Puppeteer</strong> auto-screenshot on every funnel upload; hash-based staging directories for safe file edits before publish</li>
+          <li>Horizontally scalable <strong>real-time analytics</strong> — heatmaps, video engagement, form tracking, GeoIP</li>
+          <li>Migrated raw SQL → <strong>SQLAlchemy ORM</strong> (repository pattern, 10 repos) + settings from Redis → MySQL-backed persistence</li>
+          <li>Affiliate-scoped <strong>Socket.IO rooms</strong> with Redis pub/sub ensuring events reach all Gunicorn workers</li>
+          <li><strong>Celery + Celery Beat</strong> for scheduled background tasks; production Redis guard to prevent silent in-memory fallbacks</li>
+        </ul>
+      </div>
+
+      <div class="sub-projects">
+        <div class="sub-card">
+          <h4>API Service</h4>
+          <div class="tech-row">
+            <span class="tech-pill green">Node.js</span>
+            <span class="tech-pill green">Express.js</span>
+            <span class="tech-pill green">Sequelize ORM</span>
+            <span class="tech-pill">MySQL</span>
+            <span class="tech-pill green">JWT</span>
+          </div>
+        </div>
+        <div class="sub-card">
+          <h4>Admin Dashboard</h4>
+          <div class="tech-row">
+            <span class="tech-pill green">Next.js 14</span>
+            <span class="tech-pill green">TypeScript</span>
+            <span class="tech-pill green">React</span>
+            <span class="tech-pill green">Tailwind CSS</span>
+            <span class="tech-pill green">Zustand</span>
+          </div>
+        </div>
+        <div class="sub-card">
+          <h4>Static Site Delivery</h4>
+          <div class="tech-row">
+            <span class="tech-pill green">Node.js</span>
+            <span class="tech-pill green">Express.js</span>
+            <span class="tech-pill green">Puppeteer</span>
+            <span class="tech-pill green">PM2</span>
+          </div>
+        </div>
+        <div class="sub-card">
+          <h4>Analytics Microservice</h4>
+          <div class="tech-row">
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">Flask</span>
+            <span class="tech-pill green">SQLAlchemy</span>
+            <span class="tech-pill green">Redis</span>
+            <span class="tech-pill green">Celery</span>
+            <span class="tech-pill green">Socket.IO</span>
+            <span class="tech-pill green">K8s</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mini-stats">
+        <div class="mini-stat">
+          <span class="val">4</span>
+          <span class="lbl">Microservices</span>
+        </div>
+        <div class="mini-stat">
+          <span class="val">3</span>
+          <span class="lbl">Production Servers</span>
+        </div>
+        <div class="mini-stat">
+          <span class="val">CI/CD</span>
+          <span class="lbl">GitHub Actions (all 3)</span>
+        </div>
+        <div class="mini-stat">
+          <span class="val">K8s</span>
+          <span class="lbl">HPA · RBAC · PVCs</span>
+        </div>
+        <div class="mini-stat">
+          <span class="val">Loki</span>
+          <span class="lbl">Distributed Logging</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 ── Skills ─────────────────────────────── -->
+  <section id="skills">
+    <h2>Skills</h2>
+
+    <div class="skill-legend">
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#0a1624; border:1px solid #1d3d74;"></div>
+        Core / established
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:var(--new-badge); border:1px solid var(--new-badge-border);"></div>
+        Added 2025–2026 ●
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:#1a1208; border:1px solid #3a2a0e;"></div>
+        DevOps / Infra
+      </div>
+    </div>
+
+    <div class="skills-grid">
+      <div>
+        <div class="skill-group-label">Languages</div>
+        <div class="skill-tags">
+          <span class="tag core">Python</span>
+          <span class="tag core">JavaScript</span>
+          <span class="tag core">SQL</span>
+          <span class="tag core">PHP</span>
+          <span class="tag core">HTML / CSS</span>
+          <span class="tag new"><span class="new-dot"></span>TypeScript</span>
+          <span class="tag new"><span class="new-dot"></span>Node.js</span>
+          <span class="tag new"><span class="new-dot"></span>Bash</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="skill-group-label">Databases &amp; Caching</div>
+        <div class="skill-tags">
+          <span class="tag core">MySQL</span>
+          <span class="tag core">Git</span>
+          <span class="tag new"><span class="new-dot"></span>Redis</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="skill-group-label">Frameworks &amp; Libraries</div>
+        <div class="skill-tags">
+          <span class="tag core">Flask</span>
+          <span class="tag core">Beautiful Soup</span>
+          <span class="tag core">Selenium</span>
+          <span class="tag core">Requests</span>
+          <span class="tag new"><span class="new-dot"></span>Express.js</span>
+          <span class="tag new"><span class="new-dot"></span>Next.js</span>
+          <span class="tag new"><span class="new-dot"></span>React</span>
+          <span class="tag new"><span class="new-dot"></span>Tailwind CSS</span>
+          <span class="tag new"><span class="new-dot"></span>SQLAlchemy</span>
+          <span class="tag new"><span class="new-dot"></span>Sequelize ORM</span>
+          <span class="tag new"><span class="new-dot"></span>Alembic</span>
+          <span class="tag new"><span class="new-dot"></span>Celery</span>
+          <span class="tag new"><span class="new-dot"></span>Socket.IO</span>
+          <span class="tag new"><span class="new-dot"></span>Zustand</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="skill-group-label">DevOps &amp; Observability</div>
+        <div class="skill-tags">
+          <span class="tag devops">Docker</span>
+          <span class="tag devops">Docker Compose</span>
+          <span class="tag devops">Kubernetes</span>
+          <span class="tag devops">HPA</span>
+          <span class="tag devops">GitHub Actions</span>
+          <span class="tag devops">PM2</span>
+          <span class="tag devops">Nginx</span>
+          <span class="tag devops">Gunicorn + Gevent</span>
+          <span class="tag devops">Loki</span>
+          <span class="tag devops">Grafana</span>
+          <span class="tag devops">Promtail</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 ── Experience ──────────────────────────── -->
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-dot green"></div>
+        <div class="timeline-header">
+          <span class="timeline-title">Full-Stack Engineer</span>
+          <span class="timeline-period">2025 – 2026</span>
+        </div>
+        <div class="timeline-org">Confidential Affiliate Marketing Platform · Team Project · NDA</div>
+        <ul>
+          <li>Contributed to a 4-service platform: Express API, Next.js admin, Python analytics microservice, Node.js static site server</li>
+          <li>Built custom Node.js CLI migration scaffolder generating ordered, per-scope Sequelize + raw SQL migration files</li>
+          <li>Implemented multi-database middleware routing per request to isolated MySQL databases using <code>x-db-target</code> headers</li>
+          <li>Integrated Namecheap API for automated domain registration, DNS configuration, and SSL certificate provisioning</li>
+          <li>Deployed analytics service to Kubernetes with HPA, ConfigMaps, Secrets, NetworkPolicy, PVCs, and a Alembic migration Job manifest</li>
+          <li>Wrote GitHub Actions CI/CD pipeline deploying to all 3 production servers simultaneously on merge to main</li>
+          <li>Integrated Loki + Grafana + Promtail for structured log aggregation; added request correlation IDs via <code>RequestContextFilter</code></li>
+          <li>Added production Redis guard (<code>REQUIRE_REDIS</code>) to fail fast on startup and prevent silent in-memory fallbacks that break horizontal scaling</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-header">
+          <span class="timeline-title">Web Scraping &amp; Data Extraction Specialist</span>
+          <span class="timeline-period">2013 – Present</span>
+        </div>
+        <div class="timeline-org">Upwork · Top Rated · 4.99 / 5.00 · $20 / hr</div>
+        <ul>
+          <li>18 completed contracts + 5 active; 28,700+ billed hours across 5+ years</li>
+          <li>Delivered anti-bot scraping solutions using Python + Selenium against Glassdoor, CriticalMention, Apollo.io, and similar platforms</li>
+          <li>Built Flask RSS aggregation app with daily feed refresh and OpenAI API integration (title, description, script, thumbnail generation)</li>
+          <li>Automated name cleaning pipeline integrating Google Sheets API + GPT-4o for structured data enrichment</li>
+          <li>Long-running data entry and Excel automation contracts — 10+ year working relationship with repeat clients</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5 ── Scraping Portfolio ────────────────── -->
+  <section id="portfolio">
+    <h2>Scraping &amp; Automation Projects</h2>
+
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card">
+        <h3>Glassdoor Reviews Scraper</h3>
+        <p>Python 3.11 + Selenium scraper navigating Glassdoor's anti-bot measures to extract structured review data with date-range filtering and Excel export.</p>
+        <div class="tech-row">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Selenium</span>
+          <span class="tech-pill">Beautiful Soup</span>
+          <span class="tech-pill">Excel Export</span>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <h3>CriticalMention Data Scraper</h3>
+        <p>Scraped mentions from criticalmention.com with custom filters (date, source, market, sentiment). Exported 12 data fields per mention to Excel spreadsheets.</p>
+        <div class="tech-row">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Selenium</span>
+          <span class="tech-pill">Excel Export</span>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <h3>Apollo.io Link Scraper</h3>
+        <p>Scraped filtered contact lists from Apollo.io, opened links in new tabs, scanned copyright dates, and appended outdated sites to a Google Sheet automatically.</p>
+        <div class="tech-row">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Selenium</span>
+          <span class="tech-pill">Google Sheets API</span>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <h3>RSS Aggregator + OpenAI App</h3>
+        <p>Flask web app fetching RSS feeds from Feedspot with daily auto-refresh. Each article connects to OpenAI API to generate a title, description, script, and thumbnail prompt.</p>
+        <div class="tech-row">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Flask</span>
+          <span class="tech-pill">OpenAI API</span>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <h3>Name Cleaning Automation</h3>
+        <p>Automated pipeline reading names from Google Sheets, sending batches to GPT-4o for cleaning/standardization, and writing results back — replacing hours of manual work.</p>
+        <div class="tech-row">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Google Sheets API</span>
+          <span class="tech-pill">OpenAI API</span>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <h3>Long-term Data Entry &amp; Excel Automation</h3>
+        <p>10+ year ongoing contract managing spreadsheet-backed product databases, uploading to WordPress, and maintaining automation scripts for a repeat client.</p>
+        <div class="tech-row">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">Excel</span>
+          <span class="tech-pill">WordPress</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6 ── Contact / CTA ───────────────────────── -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="cta-box">
+      <h3>Available for new projects</h3>
+      <p>Looking for a scraping specialist, a full-stack engineer, or someone who can do both? Let's talk.</p>
+      <div class="cta-links">
+        <a class="cta-btn cta-btn-primary" href="https://www.upwork.com/freelancers/~0171eb76681a861d3e" target="_blank" rel="noopener">
+          Hire on Upwork ↗
+        </a>
+        <a class="cta-btn cta-btn-secondary" href="https://github.com/terencegalos" target="_blank" rel="noopener">
+          GitHub: terencegalos ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Terence Albert G. &nbsp;·&nbsp; Tagbilaran, Philippines &nbsp;·&nbsp; Updated February 2026
+</footer>
+
 </body>
 </html>
