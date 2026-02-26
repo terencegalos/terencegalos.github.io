@@ -574,20 +574,20 @@
 
       <div class="highlight-cols">
         <ul>
-          <li>Multi-database Express API routing requests to isolated MySQL databases via custom <strong>x-db-target middleware</strong></li>
-          <li><strong>RBAC system</strong> with fine-grained permissions, JWT auth, and per-request model injection pattern</li>
-          <li>Custom <strong>migration scaffolder CLI</strong> for ordered, per-scope Sequelize + raw SQL migrations</li>
-          <li><strong>Namecheap API</strong> integration — automated domain registration, DNS config, SSL provisioning</li>
+          <li>Multi-tenant <strong>Express API</strong> serving isolated MySQL databases per client, with automatic per-request routing</li>
+          <li><strong>RBAC system</strong> with fine-grained, role-based permissions and JWT authentication</li>
+          <li>Internal <strong>CLI tooling</strong> to automate and order database migrations across multiple service scopes</li>
+          <li>Automated domain provisioning — registration, DNS setup, and SSL — via third-party registrar API</li>
           <li>Next.js 14 admin dashboard with <strong>real-time metrics</strong>, geo-distribution maps, and traffic charts</li>
-          <li>Client-side permissions caching via custom hooks (<code>usePermissions</code>, <code>useDashboardData</code>)</li>
+          <li>Optimized admin UI with <strong>client-side data caching</strong> to minimize API calls and improve responsiveness</li>
         </ul>
         <ul>
-          <li>Static site server handling upload, extraction, <strong>script injection</strong>, staging, versioning, and serving of funnels &amp; prelanders</li>
-          <li><strong>Puppeteer</strong> auto-screenshot on every funnel upload; hash-based staging directories for safe file edits before publish</li>
+          <li>Static site delivery server managing <strong>upload, staging, versioning, and serving</strong> of marketing funnels and landing pages</li>
+          <li>Automated <strong>screenshot capture</strong> on every deployment; safe staging workflow before publishing to production</li>
           <li>Horizontally scalable <strong>real-time analytics</strong> — heatmaps, video engagement, form tracking, GeoIP</li>
-          <li>Migrated raw SQL → <strong>SQLAlchemy ORM</strong> (repository pattern, 10 repos) + settings from Redis → MySQL-backed persistence</li>
-          <li>Affiliate-scoped <strong>Socket.IO rooms</strong> with Redis pub/sub ensuring events reach all Gunicorn workers</li>
-          <li><strong>Celery + Celery Beat</strong> for scheduled background tasks; production Redis guard to prevent silent in-memory fallbacks</li>
+          <li>Refactored data layer to <strong>SQLAlchemy ORM</strong> with repository pattern; migrated ad-hoc config storage to structured database persistence</li>
+          <li><strong>Real-time event broadcasting</strong> scoped per affiliate — reliably delivered across all service instances</li>
+          <li>Scheduled <strong>background task processing</strong> with Celery; hardened startup checks to ensure dependencies are available before accepting traffic</li>
         </ul>
       </div>
 
@@ -756,14 +756,14 @@
         </div>
         <div class="timeline-org">Confidential Affiliate Marketing Platform · Team Project · NDA</div>
         <ul>
-          <li>Contributed to a 4-service platform: Express API, Next.js admin, Python analytics microservice, Node.js static site server</li>
-          <li>Built custom Node.js CLI migration scaffolder generating ordered, per-scope Sequelize + raw SQL migration files</li>
-          <li>Implemented multi-database middleware routing per request to isolated MySQL databases using <code>x-db-target</code> headers</li>
-          <li>Integrated Namecheap API for automated domain registration, DNS configuration, and SSL certificate provisioning</li>
-          <li>Deployed analytics service to Kubernetes with HPA, ConfigMaps, Secrets, NetworkPolicy, PVCs, and a Alembic migration Job manifest</li>
-          <li>Wrote GitHub Actions CI/CD pipeline deploying to all 3 production servers simultaneously on merge to main</li>
-          <li>Integrated Loki + Grafana + Promtail for structured log aggregation; added request correlation IDs via <code>RequestContextFilter</code></li>
-          <li>Added production Redis guard (<code>REQUIRE_REDIS</code>) to fail fast on startup and prevent silent in-memory fallbacks that break horizontal scaling</li>
+          <li>Contributed to a 4-service platform: Express API, Next.js admin dashboard, Python analytics microservice, and Node.js static site delivery server</li>
+          <li>Developed internal CLI tooling to automate and order database migrations across multiple service scopes</li>
+          <li>Built multi-tenant database routing middleware, isolating data per client at the request level</li>
+          <li>Automated domain provisioning — registration, DNS configuration, and SSL — via third-party registrar API integration</li>
+          <li>Deployed analytics service to Kubernetes with autoscaling, secrets management, network policies, persistent storage, and automated schema migrations</li>
+          <li>Wrote GitHub Actions CI/CD pipeline for automated deployments across all production servers on merge to main</li>
+          <li>Set up centralized log aggregation with Loki and Grafana; added request correlation IDs for end-to-end traceability</li>
+          <li>Hardened service startup to fail fast when required dependencies are unavailable, preventing silent failures under horizontal scaling</li>
         </ul>
       </div>
 
